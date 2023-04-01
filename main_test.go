@@ -27,7 +27,7 @@ func testingg(t *testing.T) {
 			if resultTab[i] != exp[i] {
 				t.Errorf("PrintAscii() = %q, expected %q", resultTab, exp)
 
-			}
+			   }
 		}
 
 	}

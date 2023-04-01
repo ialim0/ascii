@@ -48,12 +48,14 @@ func printAscii(str string) string {
 
 	s := strings.Split(str, "\\n")
 
-	for _, j := range s {
+	for k, j := range s {
+		if j==""{
+			if k<len(s)-1{
+				outpout=outpout+"\n"
 
-		if len(j) == 1 && []byte(j)[0]-0 < 32 || []byte(j)[0] > 126-0 {
-			outpout = ""
-
-		} else {
+			}
+			
+		}else{
 			for i < 8 {
 
 				for _, elem := range j {
@@ -66,12 +68,21 @@ func printAscii(str string) string {
 
 				}
 				i++
-				outpout = outpout + "\n"
+				if i<7 && j!=""{
+					outpout = outpout + "\n"
+
+				} 
+				
 
 			}
 			i = 0
 
 		}
+
+	
+		
+
+		
 
 	}
 	return outpout
