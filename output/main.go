@@ -53,38 +53,32 @@ func main() {
 
 }
 func printAscii(str string) string {
-	var i int
+	var i, n int
 	outpout := ""
+	if len(str) == 0 {
+		return ""
+	}
 
 	s := strings.Split(str, "\\n")
 
 	for _, j := range s {
-
-		if j != "" && len(j) == 1 && []byte(j)[0]-0 < 32 || []byte(j)[0] > 126-0 {
-			outpout = ""
-
+		if j == "" {
+			outpout = outpout + "\n"
 		} else {
 			for i < 8 {
-				if len(j) == 0 {
-					outpout += ""
-
-				}
 
 				for _, elem := range j {
-					if len(string(elem)) == 0 {
-						outpout += ""
-
-					}
 					if byte(elem) >= 32 && byte(elem) <= 126 {
+						n = 1
 
-						outpout += tabB[byte(elem)-31][i] + " "
+						outpout += tabB[byte(elem)-31][i] + ""
 					}
-
-					//fmt.Print(tabB[byte(elem)-31][i], " ")
 
 				}
-				i++
+
 				outpout = outpout + "\n"
+
+				i++
 
 			}
 			i = 0
@@ -92,6 +86,10 @@ func printAscii(str string) string {
 		}
 
 	}
-	return outpout
 
+	if n == 1 {
+		return outpout
+	}
+	outpout = strings.Replace(outpout, "\n", "", 1)
+	return outpout
 }
